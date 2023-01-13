@@ -4,17 +4,14 @@ export const HomeBodyVideoItems = styled.li`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 15px;
+  margin-bottom: 50px;
   @media screen and (min-width: 576px) {
     width: 50%;
     height: 350px;
-    padding-right: 10px;
-    padding-top: 30px;
+    padding-right: 20px;
   }
   @media screen and (min-width: 768px) {
     width: 33.3%;
-    margin-bottom: 50px;
   }
 `
 export const HomeBodyVideoThumbNail = styled.img`
@@ -49,7 +46,7 @@ export const HomeBodyVideoTitle = styled.p`
 export const HomeBodyVideoChannelContent = styled.div`
   display: flex;
   align-items: center;
-  color: #475569;
+  color: #64748b;
   font-weight: 400;
   @media screen and (min-width: 576px) {
     flex-direction: column;
@@ -66,7 +63,6 @@ export const HomeBodyChannelName = styled.p`
 `
 export const HomeBodyPubVieCont = styled.ul`
   display: flex;
-  align-items: center;
   padding: 0px;
 `
 export const HomeBodyPubView = styled.li`

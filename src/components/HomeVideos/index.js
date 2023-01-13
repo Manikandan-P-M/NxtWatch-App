@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 
 import {
@@ -34,27 +35,29 @@ const HomeVideos = props => {
 
   return (
     <HomeBodyVideoItems key={id}>
-      <HomeBodyVideoThumbNail src={thumbnailUrl} alt="video thumbnail" />
-      <HomeBodyVideoDetails>
-        <HomeBodyVideoProfileImage
-          src={channel.profileImageUrl}
-          alt="channel logo"
-        />
-        <HomeBodyVideoContent>
-          <HomeBodyVideoTitle isLight={isLight}>{title}</HomeBodyVideoTitle>
-          <HomeBodyVideoChannelContent>
-            <HomeBodyChannelName>{channel.name}</HomeBodyChannelName>
-            <HomeBodyPubVieCont>
-              <HomeBodyPubView decoration>
-                <p>{viewCount} views</p>
-              </HomeBodyPubView>
-              <HomeBodyPubView>
-                <p>{pubAt} ago</p>
-              </HomeBodyPubView>
-            </HomeBodyPubVieCont>
-          </HomeBodyVideoChannelContent>
-        </HomeBodyVideoContent>
-      </HomeBodyVideoDetails>
+      <Link to={`/videos/${id}`} className="nav-link">
+        <HomeBodyVideoThumbNail src={thumbnailUrl} alt="video thumbnail" />
+        <HomeBodyVideoDetails>
+          <HomeBodyVideoProfileImage
+            src={channel.profileImageUrl}
+            alt="channel logo"
+          />
+          <HomeBodyVideoContent>
+            <HomeBodyVideoTitle isLight={isLight}>{title}</HomeBodyVideoTitle>
+            <HomeBodyVideoChannelContent>
+              <HomeBodyChannelName>{channel.name}</HomeBodyChannelName>
+              <HomeBodyPubVieCont>
+                <HomeBodyPubView decoration>
+                  <p>{viewCount} views</p>
+                </HomeBodyPubView>
+                <HomeBodyPubView>
+                  <p>{pubAt} ago</p>
+                </HomeBodyPubView>
+              </HomeBodyPubVieCont>
+            </HomeBodyVideoChannelContent>
+          </HomeBodyVideoContent>
+        </HomeBodyVideoDetails>
+      </Link>
     </HomeBodyVideoItems>
   )
 }

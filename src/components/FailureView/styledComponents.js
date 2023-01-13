@@ -14,7 +14,7 @@ export const FailureHeading = styled.h1`
 `
 export const FailureDesc = styled.p`
   font-size: 14px;
-  color: #475569;
+  color: ${props => (props.isLight ? '#475569' : '#64748b')};
   margin-bottom: 10px;
 `
 export const FailureBtn = styled.button`

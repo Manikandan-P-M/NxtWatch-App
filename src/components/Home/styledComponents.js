@@ -131,10 +131,13 @@ export const HomeBodyVideosList = styled.ul`
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding-top: 20px;
+  padding-bottom: 15px;
   @media screen and (min-width: 576px) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-top: 30px;
   }
 `
 export const NoSearchFilterCont = styled.div`

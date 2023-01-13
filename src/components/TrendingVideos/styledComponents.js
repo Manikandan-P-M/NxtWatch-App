@@ -4,7 +4,16 @@ export const TrendingBodyVideosItem = styled.li`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  @media screen and (min-width: 576px) {
+    display: flex;
+    flex-direction: row;
+  }
+`
+export const TrendingBodyVideoItemCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   @media screen and (min-width: 576px) {
     display: flex;
     flex-direction: row;
@@ -13,14 +22,12 @@ export const TrendingBodyVideosItem = styled.li`
 export const TrendingBodyThumbnail = styled.img`
   width: 100%;
   object-fit: contain;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   @media screen and (min-width: 576px) {
     width: 300px;
-    margin-bottom: 20px;
   }
   @media screen and (min-width: 768px) {
     width: 350px;
-    margin-bottom: 20px;
   }
 `
 export const TrendingBodyVideoDetails = styled.div`
@@ -30,7 +37,8 @@ export const TrendingBodyVideoProfileImg = styled.img`
   width: 40px;
   height: 45px;
   margin-right: 15px;
-  @media screen {
+  margin-left: 15px;
+  @media screen and (min-width: 576px) {
     display: none;
   }
 `
@@ -51,8 +59,7 @@ export const TrendingBodyVideoTitle = styled.p`
 export const TrendingBodyChannelCont = styled.div`
   display: flex;
   align-items: center;
-  color: #475569;
-  font-weight: 400;
+  color: #64748b;
   @media screen and (min-width: 576px) {
     flex-direction: column;
     justify-content: flex-start;
@@ -68,7 +75,6 @@ export const TrendingBodyChannelName = styled.p`
 `
 export const TrendingBodyPubVieCont = styled.ul`
   display: flex;
-  align-items: center;
   padding: 0px;
 `
 export const TrendingBodyPubView = styled.li`

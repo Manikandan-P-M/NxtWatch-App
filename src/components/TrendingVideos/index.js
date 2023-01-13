@@ -1,7 +1,9 @@
+import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 
 import {
   TrendingBodyVideosItem,
+  TrendingBodyVideoItemCont,
   TrendingBodyThumbnail,
   TrendingBodyVideoDetails,
   TrendingBodyVideoProfileImg,
@@ -32,29 +34,35 @@ const TrendingVideos = props => {
   }
   return (
     <TrendingBodyVideosItem key={id}>
-      <TrendingBodyThumbnail src={thumbnailUrl} alt="video thumbnail" />
-      <TrendingBodyVideoDetails>
-        <TrendingBodyVideoProfileImg
-          src={channel.profileImageUrl}
-          alt="channel logo"
-        />
-        <TrendingBodyVideoContent>
-          <TrendingBodyVideoTitle isLight={isLight}>
-            {title}
-          </TrendingBodyVideoTitle>
-          <TrendingBodyChannelCont>
-            <TrendingBodyChannelName>{channel.name}</TrendingBodyChannelName>
-            <TrendingBodyPubVieCont>
-              <TrendingBodyPubView decoration>
-                <p>{viewCount} views</p>
-              </TrendingBodyPubView>
-              <TrendingBodyPubView>
-                <p>{pubAt} ago</p>
-              </TrendingBodyPubView>
-            </TrendingBodyPubVieCont>
-          </TrendingBodyChannelCont>
-        </TrendingBodyVideoContent>
-      </TrendingBodyVideoDetails>
+      <Link to={`/videos/${id}`} className="nav-link">
+        <TrendingBodyVideoItemCont>
+          <TrendingBodyThumbnail src={thumbnailUrl} alt="video thumbnail" />
+          <TrendingBodyVideoDetails>
+            <TrendingBodyVideoProfileImg
+              src={channel.profileImageUrl}
+              alt="channel logo"
+            />
+            <TrendingBodyVideoContent>
+              <TrendingBodyVideoTitle isLight={isLight}>
+                {title}
+              </TrendingBodyVideoTitle>
+              <TrendingBodyChannelCont>
+                <TrendingBodyChannelName>
+                  {channel.name}
+                </TrendingBodyChannelName>
+                <TrendingBodyPubVieCont>
+                  <TrendingBodyPubView decoration>
+                    <p>{viewCount} views</p>
+                  </TrendingBodyPubView>
+                  <TrendingBodyPubView>
+                    <p>{pubAt} ago</p>
+                  </TrendingBodyPubView>
+                </TrendingBodyPubVieCont>
+              </TrendingBodyChannelCont>
+            </TrendingBodyVideoContent>
+          </TrendingBodyVideoDetails>
+        </TrendingBodyVideoItemCont>
+      </Link>
     </TrendingBodyVideosItem>
   )
 }

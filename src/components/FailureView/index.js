@@ -19,7 +19,7 @@ const FailureView = props => {
       <FailureHeading isLight={isLight}>
         Oops! Something Went Wrong
       </FailureHeading>
-      <FailureDesc>
+      <FailureDesc isLight={isLight}>
         We are having some trouble to complete your request. Please try again
       </FailureDesc>
       <FailureBtn type="button" onClick={onCLickRetry}>
