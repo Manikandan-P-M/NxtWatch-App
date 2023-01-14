@@ -95,8 +95,12 @@ class Home extends Component {
   }
 
   showAdPremium = () => (
-    <GetPremiumCont>
-      <PremiumCloseBtn type="button" onClick={this.closePremiumAd}>
+    <GetPremiumCont data-testid="banner">
+      <PremiumCloseBtn
+        type="button"
+        data-testid="close"
+        onClick={this.closePremiumAd}
+      >
         <IoMdClose color="#4A5562" size={22} />
       </PremiumCloseBtn>
       <PremiumLogo
@@ -174,7 +178,7 @@ class Home extends Component {
         {value => {
           const {isLight} = value
           return (
-            <HomeContainer>
+            <HomeContainer data-testid="home" isLight={isLight}>
               <Header activeMenu={activeMenu} />
               <HomeBodyContainer>
                 <Sidebar activeMenu={activeMenu} />
@@ -193,6 +197,7 @@ class Home extends Component {
                         isLight={isLight}
                         type="button"
                         onClick={this.getHomeVideos}
+                        data-testid="searchButton"
                       >
                         <AiOutlineSearch size={18} />
                       </SearchBtn>

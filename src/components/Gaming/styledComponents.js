@@ -5,6 +5,7 @@ export const GamingContainer = styled.div`
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  background-color: ${props => (props.isLight ? '#f9f9f9' : '#0f0f0f')};
 `
 export const GamingBodyContainer = styled.div`
   display: flex;

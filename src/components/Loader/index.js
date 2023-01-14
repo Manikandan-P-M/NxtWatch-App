@@ -3,7 +3,7 @@ import Loader from 'react-loader-spinner'
 const LoaderView = props => {
   const {isLight} = props
   return (
-    <div className="loader-container">
+    <div className="loader-container" data-testid="loader">
       <Loader
         type="ThreeDots"
         color={isLight ? '#000' : '#fff'}

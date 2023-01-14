@@ -115,7 +115,7 @@ class Gaming extends Component {
         {value => {
           const {isLight} = value
           return (
-            <GamingContainer>
+            <GamingContainer data-testid="gaming" isLight={isLight}>
               <Header activeMenu={activeMenu} />
               <GamingBodyContainer>
                 <Sidebar activeMenu={activeMenu} />

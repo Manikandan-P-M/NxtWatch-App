@@ -5,6 +5,7 @@ export const TrendingContainer = styled.div`
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  background-color: ${props => (props.isLight ? '#f9f9f9' : '#0f0f0f')};
 `
 export const TrendingBodyContainer = styled.div`
   display: flex;

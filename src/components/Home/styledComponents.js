@@ -5,6 +5,7 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  background-color: ${props => (props.isLight ? '#f9f9f9' : '#181818')};
 `
 export const HomeBodyContainer = styled.div`
   display: flex;

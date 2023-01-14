@@ -21,12 +21,14 @@ export const TrendingBodyVideoItemCont = styled.div`
 `
 export const TrendingBodyThumbnail = styled.img`
   width: 100%;
-  object-fit: contain;
+  height: 250px;
   margin-bottom: 10px;
   @media screen and (min-width: 576px) {
     width: 300px;
+    height: 150px;
   }
   @media screen and (min-width: 768px) {
+    height: 200px;
     width: 350px;
   }
 `

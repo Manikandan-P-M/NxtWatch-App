@@ -19,7 +19,8 @@ const TrendingVideos = props => {
   const {trendingVideoDetails, isLight} = props
   const {
     thumbnailUrl,
-    channel,
+    name,
+    profileImageUrl,
     viewCount,
     title,
     id,
@@ -39,7 +40,7 @@ const TrendingVideos = props => {
           <TrendingBodyThumbnail src={thumbnailUrl} alt="video thumbnail" />
           <TrendingBodyVideoDetails>
             <TrendingBodyVideoProfileImg
-              src={channel.profileImageUrl}
+              src={profileImageUrl}
               alt="channel logo"
             />
             <TrendingBodyVideoContent>
@@ -47,9 +48,7 @@ const TrendingVideos = props => {
                 {title}
               </TrendingBodyVideoTitle>
               <TrendingBodyChannelCont>
-                <TrendingBodyChannelName>
-                  {channel.name}
-                </TrendingBodyChannelName>
+                <TrendingBodyChannelName>{name}</TrendingBodyChannelName>
                 <TrendingBodyPubVieCont>
                   <TrendingBodyPubView decoration>
                     <p>{viewCount} views</p>

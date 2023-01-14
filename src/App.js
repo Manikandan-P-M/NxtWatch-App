@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 import NxtWatchContext from './context/NxtWatchContext'
 
@@ -8,6 +8,8 @@ import Home from './components/Home'
 import Trending from './components/Trending'
 import Gaming from './components/Gaming'
 import VideoDetails from './components/VideoDetails'
+import SavedVideos from './components/SavedVideos'
+import NotFound from './components/NotFound'
 import ProtectedRoute from './components/ProtectedRoute'
 
 import './App.css'
@@ -29,8 +31,8 @@ class App extends Component {
   }
 
   addVideosToSavedVideos = videoDetails => {
-    this.setState(prev => ({
-      savedVideosList: [...prev.savedVideosList, videoDetails],
+    this.setState(prevState => ({
+      savedVideosList: [...prevState.savedVideosList, videoDetails],
     }))
   }
 
@@ -87,7 +89,10 @@ class App extends Component {
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/trending" component={Trending} />
           <ProtectedRoute exact path="/gaming" component={Gaming} />
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
           <ProtectedRoute exact path="/videos/:id" component={VideoDetails} />
+          <ProtectedRoute exact path="/not-found" component={NotFound} />
+          <Redirect to="not-found" />
         </Switch>
       </NxtWatchContext.Provider>
     )

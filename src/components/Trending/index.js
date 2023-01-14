@@ -53,10 +53,8 @@ class Trending extends Component {
     const data = await response.json()
     if (response.ok) {
       const trendingVideosList = data.videos.map(eachItem => ({
-        channel: {
-          name: eachItem.channel.name,
-          profileImageUrl: eachItem.channel.profile_image_url,
-        },
+        name: eachItem.channel.name,
+        profileImageUrl: eachItem.channel.profile_image_url,
         id: eachItem.id,
         publishedAt: eachItem.published_at,
         thumbnailUrl: eachItem.thumbnail_url,
@@ -120,7 +118,7 @@ class Trending extends Component {
         {value => {
           const {isLight} = value
           return (
-            <TrendingContainer>
+            <TrendingContainer data-testid="trending" isLight={isLight}>
               <Header activeMenu={activeMenu} />
               <TrendingBodyContainer>
                 <Sidebar activeMenu={activeMenu} />

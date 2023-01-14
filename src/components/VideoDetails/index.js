@@ -113,7 +113,7 @@ class VideoDetails extends Component {
     </FailureViewCont>
   )
 
-  renderVideoDetails = isLight => {
+  renderVideoDetails = (isLight, updateSave, savedVideosList) => {
     const {videoDetails, like, dislike} = this.state
     const {
       id,
@@ -133,89 +133,76 @@ class VideoDetails extends Component {
       pubAtList.shift()
       pubAt = pubAtList.join(' ')
     }
+    const present = savedVideosList.find(each => each.id === id)
+    const saveIsActive = present !== undefined ? 'active' : null
+    const saveText = present !== undefined ? 'Saved' : 'Save'
+    const isLike = like ? 'active' : null
+    const isDislike = dislike ? 'active' : null
+
     return (
-      <NxtWatchContext.Consumer>
-        {value => {
-          const {updateSave, savedVideosList} = value
-          const present = savedVideosList.find(each => each.id === id)
-          const saveIsActive = present !== undefined ? 'active' : null
-          const saveText = present !== undefined ? 'Saved' : 'Save'
-          const isLike = like ? 'active' : null
-          const isDislike = dislike ? 'active' : null
-          return (
-            <VideoDetailsPlayerCont key={id}>
-              <VideoPlayerCont>
-                <ReactPlayer
-                  url={videoUrl}
-                  controls
-                  width="100%"
-                  height="100%"
-                />
-              </VideoPlayerCont>
-              <VideoDetail>
-                <VideoTitle isLight={isLight}>{title}</VideoTitle>
-                <VideoViewPubCont>
-                  <VideoViewPubList>
-                    <VideoViewPubItem decoration>
-                      <p>{viewCount} views</p>
-                    </VideoViewPubItem>
-                    <VideoViewPubItem>
-                      <p>{pubAt} ago</p>
-                    </VideoViewPubItem>
-                  </VideoViewPubList>
-                  <VideoBtnCont>
-                    <VideoBtnsIcon
-                      type="button"
-                      active={isLike}
-                      onClick={this.updateLike}
-                    >
-                      <BiLike size={20} style={{marginRight: '5px'}} />
-                      Like
-                    </VideoBtnsIcon>
-                    <VideoBtnsIcon
-                      type="button"
-                      active={isDislike}
-                      onClick={this.updateDislike}
-                    >
-                      <BiDislike size={20} style={{marginRight: '5px'}} />
-                      Dislike
-                    </VideoBtnsIcon>
-                    <VideoBtnsIcon
-                      type="button"
-                      active={saveIsActive}
-                      onClick={() => updateSave(videoDetails)}
-                    >
-                      <RiMenuAddLine size={15} style={{marginRight: '5px'}} />
-                      {saveText}
-                    </VideoBtnsIcon>
-                  </VideoBtnCont>
-                </VideoViewPubCont>
-                <HrLine />
-                <VideoChannelDetails>
-                  <VideoProfileImg src={profileImageUrl} alt="channel logo" />
-                  <VideoChannelCont>
-                    <VideoChannelName isLight={isLight}>
-                      {name}
-                    </VideoChannelName>
-                    <VideoChannelSubCount>
-                      {subscriberCount} subscribers
-                    </VideoChannelSubCount>
-                  </VideoChannelCont>
-                </VideoChannelDetails>
-                <VideoDesc isLight={isLight}>{description}</VideoDesc>
-              </VideoDetail>
-            </VideoDetailsPlayerCont>
-          )
-        }}
-      </NxtWatchContext.Consumer>
+      <VideoDetailsPlayerCont key={id}>
+        <VideoPlayerCont>
+          <ReactPlayer url={videoUrl} controls width="100%" height="100%" />
+        </VideoPlayerCont>
+        <VideoDetail>
+          <VideoTitle isLight={isLight}>{title}</VideoTitle>
+          <VideoViewPubCont>
+            <VideoViewPubList>
+              <VideoViewPubItem decoration>
+                <p>{viewCount} views</p>
+              </VideoViewPubItem>
+              <VideoViewPubItem>
+                <p>{pubAt} ago</p>
+              </VideoViewPubItem>
+            </VideoViewPubList>
+            <VideoBtnCont>
+              <VideoBtnsIcon
+                type="button"
+                active={isLike}
+                onClick={this.updateLike}
+              >
+                <BiLike size={20} style={{marginRight: '5px'}} />
+                Like
+              </VideoBtnsIcon>
+              <VideoBtnsIcon
+                type="button"
+                active={isDislike}
+                onClick={this.updateDislike}
+              >
+                <BiDislike size={20} style={{marginRight: '5px'}} />
+                Dislike
+              </VideoBtnsIcon>
+              <VideoBtnsIcon
+                type="button"
+                active={saveIsActive}
+                onClick={() => updateSave(videoDetails)}
+              >
+                <RiMenuAddLine size={15} style={{marginRight: '5px'}} />
+                {saveText}
+              </VideoBtnsIcon>
+            </VideoBtnCont>
+          </VideoViewPubCont>
+          <HrLine />
+          <VideoChannelDetails>
+            <VideoProfileImg src={profileImageUrl} alt="channel logo" />
+            <VideoChannelCont>
+              <VideoChannelName isLight={isLight}>{name}</VideoChannelName>
+              <VideoChannelSubCount>
+                {subscriberCount} subscribers
+              </VideoChannelSubCount>
+            </VideoChannelCont>
+          </VideoChannelDetails>
+          <VideoDesc isLight={isLight}>{description}</VideoDesc>
+        </VideoDetail>
+      </VideoDetailsPlayerCont>
     )
   }
 
-  renderVideoDetailsStatus = isLight => {
+  renderVideoDetailsStatus = (isLight, updateSave, savedVideosList) => {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.success:
-        return this.renderVideoDetails(isLight)
+        return this.renderVideoDetails(isLight, updateSave, savedVideosList)
       case apiStatusConstants.failure:
         return this.renderFailureView(isLight)
       case apiStatusConstants.inProgress:
@@ -229,14 +216,21 @@ class VideoDetails extends Component {
     return (
       <NxtWatchContext.Consumer>
         {value => {
-          const {isLight} = value
+          const {isLight, updateSave, savedVideosList} = value
           return (
-            <VideoDetailsContainer>
+            <VideoDetailsContainer
+              data-testid="videoItemDetails"
+              isLight={isLight}
+            >
               <Header />
               <VideoDetailsBodyCont>
                 <Sidebar />
                 <VideoDetailsCont isLight={isLight}>
-                  {this.renderVideoDetailsStatus(isLight)}
+                  {this.renderVideoDetailsStatus(
+                    isLight,
+                    updateSave,
+                    savedVideosList,
+                  )}
                 </VideoDetailsCont>
               </VideoDetailsBodyCont>
             </VideoDetailsContainer>
